@@ -1,0 +1,10 @@
+C:\Users\Joseph\Desktop\dma-master-test\dma-master-test\dma-master-test\.autopilot\db\dma-master-test.pp.0.cpp:4400:2: warning: Added loop label VITIS_LOOP_43_1:   [xilinx-label-all-loops]
+ for (x = 0; x < num_quads; x++) {
+ ^~~
+ VITIS_LOOP_43_1: 
+C:\Users\Joseph\Desktop\dma-master-test\dma-master-test\dma-master-test\.autopilot\db\dma-master-test.pp.0.cpp:4400:2: note: FIX-IT applied suggested code changes
+C:\Users\Joseph\Desktop\dma-master-test\dma-master-test\dma-master-test\.autopilot\db\dma-master-test.pp.0.cpp:4477:2: warning: Added loop label VITIS_LOOP_120_2:   [xilinx-label-all-loops]
+ for (x = 0; x < num_quads; x++) {
+ ^~~
+ VITIS_LOOP_120_2: 
+C:\Users\Joseph\Desktop\dma-master-test\dma-master-test\dma-master-test\.autopilot\db\dma-master-test.pp.0.cpp:4477:2: note: FIX-IT applied suggested code changes

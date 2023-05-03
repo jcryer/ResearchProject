@@ -1,0 +1,314 @@
+
+
+================================================================
+== Synthesis Summary Report of 'dma_master_test'
+================================================================
++ General Information: 
+    * Date:           Thu Apr 27 23:04:46 2023
+    * Version:        2022.2 (Build 3670227 on Oct 13 2022)
+    * Project:        dma-master-test
+    * Solution:       dma-master-test (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +----------------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+---------+-----------+-------------+-------------+-----+
+    |                    Modules                   |  Issue |       | Latency |  Latency  | Iteration|         | Trip |          |         |           |             |             |     |
+    |                    & Loops                   |  Type  | Slack | (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined|  BRAM   |    DSP    |      FF     |     LUT     | URAM|
+    +----------------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+---------+-----------+-------------+-------------+-----+
+    |+ dma_master_test                             |  Timing|  -1.30|      869|  8.690e+03|         -|      870|     -|        no|  11 (3%)|  200 (90%)|  20045 (18%)|  29224 (54%)|    -|
+    | + dma_master_test_Pipeline_1                 |       -|   2.62|       52|    520.000|         -|       52|     -|        no|        -|          -|      8 (~0%)|     51 (~0%)|    -|
+    |  o Loop 1                                    |       -|   7.30|       50|    500.000|         1|        1|    50|       yes|        -|          -|            -|            -|    -|
+    | + dma_master_test_Pipeline_2                 |       -|   0.00|      517|  5.170e+03|         -|      517|     -|        no|        -|          -|     81 (~0%)|    154 (~0%)|    -|
+    |  o Loop 1                                    |       -|   7.30|      515|  5.150e+03|         3|        1|   514|       yes|        -|          -|            -|            -|    -|
+    | + dma_master_test_Pipeline_VITIS_LOOP_43_1   |       -|   0.04|      143|  1.430e+03|         -|      143|     -|        no|        -|  134 (60%)|  12842 (12%)|  18570 (34%)|    -|
+    |  o VITIS_LOOP_43_1                           |       -|   7.30|      141|  1.410e+03|        93|        1|    50|       yes|        -|          -|            -|            -|    -|
+    | + dma_master_test_Pipeline_VITIS_LOOP_120_2  |       -|   0.19|      104|  1.040e+03|         -|      104|     -|        no|        -|          -|    262 (~0%)|    229 (~0%)|    -|
+    |  o VITIS_LOOP_120_2                          |      II|   7.30|      102|  1.020e+03|         5|        2|    50|       yes|        -|          -|            -|            -|    -|
+    | + dma_master_test_Pipeline_5                 |       -|   0.00|       11|    110.000|         -|       11|     -|        no|        -|          -|     53 (~0%)|    152 (~0%)|    -|
+    |  o Loop 1                                    |       -|   7.30|        9|     90.000|         3|        1|     8|       yes|        -|          -|            -|            -|    -|
+    +----------------------------------------------+--------+-------+---------+-----------+----------+---------+------+----------+---------+-----------+-------------+-------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| Interface  | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   |
+|            | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |
++------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+| m_axi_gmem | 32 -> 32   | 64            | 0       | slave  | 0        | 0         | 16           | 16           | 16          | 16          |
++------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 6             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register  | Offset | Width | Access | Description                      | Bit Fields                                                           |
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL      | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER      | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_control | IP_IER    | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR    | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | arr_1     | 0x10   | 32    | W      | Data signal of arr               |                                                                      |
+| s_axi_control | arr_2     | 0x14   | 32    | W      | Data signal of arr               |                                                                      |
+| s_axi_control | num_quads | 0x1c   | 32    | W      | Data signal of num_quads         |                                                                      |
++---------------+-----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++-----------+-----------+----------+
+| Argument  | Direction | Datatype |
++-----------+-----------+----------+
+| arr       | inout     | pointer  |
+| num_quads | in        | int      |
++-----------+-----------+----------+
+
+* SW-to-HW Mapping
++-----------+---------------+-----------+----------+-------------------------------------+
+| Argument  | HW Interface  | HW Type   | HW Usage | HW Info                             |
++-----------+---------------+-----------+----------+-------------------------------------+
+| arr       | m_axi_gmem    | interface |          |                                     |
+| arr       | s_axi_control | register  | offset   | name=arr_1 offset=0x10 range=32     |
+| arr       | s_axi_control | register  | offset   | name=arr_2 offset=0x14 range=32     |
+| num_quads | s_axi_control | register  |          | name=num_quads offset=0x1c range=32 |
++-----------+---------------+-----------+----------+-------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+-----------+-----------+--------+-------+---------------------------+
+| HW Interface | Loop      | Direction | Length | Width | Location                  |
++--------------+-----------+-----------+--------+-------+---------------------------+
+| m_axi_gmem   | anonymous | read      | 514    | 32    | dma-master-test.cpp:31:2  |
+| m_axi_gmem   | anonymous | write     | 8      | 32    | dma-master-test.cpp:160:2 |
++--------------+-----------+-----------+--------+-------+---------------------------+
+
+* Inferred Bursts and Widening Missed
++--------------+----------+-----------+---------------------------------------------------------------------------------------------------------+------------+---------------------------+
+| HW Interface | Variable | Loop      | Problem                                                                                                 | Resolution | Location                  |
++--------------+----------+-----------+---------------------------------------------------------------------------------------------------------+------------+---------------------------+
+| m_axi_gmem   | arr      | anonymous | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | dma-master-test.cpp:160:2 |
+| m_axi_gmem   | arr      | anonymous | Could not widen since type float size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | dma-master-test.cpp:31:2  |
++--------------+----------+-----------+---------------------------------------------------------------------------------------------------------+------------+---------------------------+
+
+    * Resolution URL: www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;t=hls+guidance;d=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------------------+-----+--------+-------------+-------+---------+---------+
+| Name                                         | DSP | Pragma | Variable    | Op    | Impl    | Latency |
++----------------------------------------------+-----+--------+-------------+-------+---------+---------+
+| + dma_master_test                            | 200 |        |             |       |         |         |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U134         | 3   |        | mul         | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U135         | 3   |        | mul1        | fmul  | maxdsp  | 3       |
+|   faddfsub_32ns_32ns_32_5_full_dsp_1_U128    | 2   |        | add         | fadd  | fulldsp | 4       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U136         | 3   |        | mul2        | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U137         | 3   |        | mul3        | fmul  | maxdsp  | 3       |
+|   fadd_32ns_32ns_32_5_full_dsp_1_U129        | 2   |        | add1        | fadd  | fulldsp | 4       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U138         | 3   |        | mul4        | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U139         | 3   |        | mul5        | fmul  | maxdsp  | 3       |
+|   fadd_32ns_32ns_32_5_full_dsp_1_U130        | 2   |        | add2        | fadd  | fulldsp | 4       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U134         | 3   |        | tmp1        | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U135         | 3   |        | tmp4        | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U136         | 3   |        | tmp9        | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U137         | 3   |        | tmp20       | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U138         | 3   |        | tmp22       | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U139         | 3   |        | tmp23       | fmul  | maxdsp  | 3       |
+|   mult_fu_756_p2                             | -   |        | mult        | add   | fabric  | 0       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U134         | 3   |        | mul33       | fmul  | maxdsp  | 3       |
+|   faddfsub_32ns_32ns_32_5_full_dsp_1_U128    | 2   |        | pox         | fadd  | fulldsp | 4       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U139         | 3   |        | mul34       | fmul  | maxdsp  | 3       |
+|   fadd_32ns_32ns_32_5_full_dsp_1_U129        | 2   |        | poy         | fadd  | fulldsp | 4       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U136         | 3   |        | mul35       | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U134         | 2   |        | poz         | fadd  | fulldsp | 4       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U140         | -   |        | add_ln135   | add   | fabric  | 0       |
+|   mul_32ns_34ns_65_2_1_U144                  | 3   |        | mul_ln135   | mul   | auto    | 1       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U134         | 3   |        | mul36       | fmul  | maxdsp  | 3       |
+|   fadd_32ns_32ns_32_5_full_dsp_1_U133        | -   |        | add_ln135_1 | add   | fabric  | 0       |
+|   mul_32ns_34ns_65_2_1_U145                  | 3   |        | mul_ln135_1 | mul   | auto    | 1       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U135         | 3   |        | mul37       | fmul  | maxdsp  | 3       |
+|   add_ln135_2_fu_774_p2                      | -   |        | add_ln135_2 | add   | fabric  | 0       |
+|   mul_32ns_34ns_65_2_1_U146                  | 3   |        | mul_ln135_2 | mul   | auto    | 1       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U136         | 3   |        | mul38       | fmul  | maxdsp  | 3       |
+|   add_ln135_3_fu_825_p2                      | -   |        | add_ln135_3 | add   | fabric  | 0       |
+|   mul_32ns_34ns_65_2_1_U150                  | 3   |        | mul_ln135_3 | mul   | auto    | 1       |
+|   faddfsub_32ns_32ns_32_5_full_dsp_1_U128    | 2   |        | tmp34       | fadd  | fulldsp | 4       |
+|   fadd_32ns_32ns_32_5_full_dsp_1_U129        | 2   |        | tmp35       | fadd  | fulldsp | 4       |
+|   faddfsub_32ns_32ns_32_5_full_dsp_1_U128    | 2   |        | n_x         | fadd  | fulldsp | 4       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U137         | 3   |        | mul39       | fmul  | maxdsp  | 3       |
+|   add_ln136_fu_780_p2                        | -   |        | add_ln136   | add   | fabric  | 0       |
+|   mul_32ns_34ns_65_2_1_U147                  | 3   |        | mul_ln136   | mul   | auto    | 1       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U138         | 3   |        | mul40       | fmul  | maxdsp  | 3       |
+|   add_ln136_1_fu_786_p2                      | -   |        | add_ln136_1 | add   | fabric  | 0       |
+|   mul_32ns_34ns_65_2_1_U148                  | 3   |        | mul_ln136_1 | mul   | auto    | 1       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U139         | 3   |        | mul41       | fmul  | maxdsp  | 3       |
+|   add_ln136_2_fu_848_p2                      | -   |        | add_ln136_2 | add   | fabric  | 0       |
+|   mul_32ns_34ns_65_2_1_U151                  | 3   |        | mul_ln136_2 | mul   | auto    | 1       |
+|   fadd_32ns_32ns_32_5_full_dsp_1_U130        | 2   |        | tmp36       | fadd  | fulldsp | 4       |
+|   fadd_32ns_32ns_32_5_full_dsp_1_U131        | 2   |        | tmp37       | fadd  | fulldsp | 4       |
+|   fadd_32ns_32ns_32_5_full_dsp_1_U129        | 2   |        | n_y         | fadd  | fulldsp | 4       |
+|   fcmp_32ns_32ns_1_2_no_dsp_1_U154           | 3   |        | mul42       | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U141         | 3   |        | mul43       | fmul  | maxdsp  | 3       |
+|   add_ln137_fu_792_p2                        | -   |        | add_ln137   | add   | fabric  | 0       |
+|   mul_32ns_34ns_65_2_1_U149                  | 3   |        | mul_ln137   | mul   | auto    | 1       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U142         | 3   |        | mul44       | fmul  | maxdsp  | 3       |
+|   add_ln137_1_fu_862_p2                      | -   |        | add_ln137_1 | add   | fabric  | 0       |
+|   mul_32ns_34ns_65_2_1_U152                  | 3   |        | mul_ln137_1 | mul   | auto    | 1       |
+|   fadd_32ns_32ns_32_5_full_dsp_1_U132        | 2   |        | tmp38       | fadd  | fulldsp | 4       |
+|   fadd_32ns_32ns_32_5_full_dsp_1_U133        | 2   |        | tmp39       | fadd  | fulldsp | 4       |
+|   fadd_32ns_32ns_32_5_full_dsp_1_U130        | 2   |        | n_z         | fadd  | fulldsp | 4       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U134         | 3   |        | mul45       | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U134         | 3   |        | mul46       | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U135         | 3   |        | mul47       | fmul  | maxdsp  | 3       |
+|   faddfsub_32ns_32ns_32_5_full_dsp_1_U128    | 2   |        | tmp40       | fadd  | fulldsp | 4       |
+|   faddfsub_32ns_32ns_32_5_full_dsp_1_U128    | 2   |        | n_assign    | fadd  | fulldsp | 4       |
+|   sub_ln15_fu_1038_p2                        | -   |        | sub_ln15    | sub   | fabric  | 0       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U134         | 3   |        | tmp41       | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U135         | 3   |        | tmp42       | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U134         | 3   |        | mul2_i      | fmul  | maxdsp  | 3       |
+|   faddfsub_32ns_32ns_32_5_full_dsp_1_U128    | 2   |        | sub3_i      | fadd  | fulldsp | 4       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U134         | 3   |        | mod         | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U134         | 3   |        | mul48       | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U135         | 3   |        | mul49       | fmul  | maxdsp  | 3       |
+|   fmul_32ns_32ns_32_4_max_dsp_1_U136         | 3   |        | mul50       | fmul  | maxdsp  | 3       |
+|  + dma_master_test_Pipeline_1                | 0   |        |             |       |         |         |
+|    empty_31_fu_58_p2                         | -   |        | empty_31    | add   | fabric  | 0       |
+|  + dma_master_test_Pipeline_2                | 0   |        |             |       |         |         |
+|    empty_fu_192_p2                           | -   |        | empty       | add   | fabric  | 0       |
+|    next_mul_fu_252_p2                        | -   |        | next_mul    | add   | fabric  | 0       |
+|    next_urem_fu_216_p2                       | -   |        | next_urem   | add   | fabric  | 0       |
+|  + dma_master_test_Pipeline_VITIS_LOOP_43_1  | 134 |        |             |       |         |         |
+|    add_ln43_fu_656_p2                        | -   |        | add_ln43    | add   | fabric  | 0       |
+|    add_ln47_fu_700_p2                        | -   |        | add_ln47    | add   | fabric  | 0       |
+|    add_ln48_fu_674_p2                        | -   |        | add_ln48    | add   | fabric  | 0       |
+|    add_ln53_fu_690_p2                        | -   |        | add_ln53    | add   | fabric  | 0       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U52         | 3   |        | mul7        | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U53         | 3   |        | tmp2        | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U61         | 3   |        | mul6        | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U54         | 3   |        | mul         | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U55         | 3   |        | mul1        | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U44         | 3   |        | tmp5        | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U60         | 3   |        | mul3        | fmul  | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U22        | 2   |        | tmp         | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U23        | 2   |        | tmp7        | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U28        | 2   |        | A           | fadd  | fulldsp | 4       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U56         | 3   |        | mul5        | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U62         | 3   |        | mul10       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U45         | 3   |        | mul13       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U57         | 3   |        | mul14       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U63         | 3   |        | mul15       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U43         | 3   |        | mul16       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U64         | 3   |        | mul17       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U46         | 3   |        | mul19       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U47         | 3   |        | mul20       | fmul  | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U15        | 2   |        | tmp10       | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U24        | 2   |        | tmp12       | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U16        | 2   |        | tmp13       | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U17        | 2   |        | tmp15       | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U25        | 2   |        | tmp16       | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U29        | 2   |        | add3        | fadd  | fulldsp | 4       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U70         | 3   |        | B           | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U65         | 3   |        | mul21       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U58         | 3   |        | tmp17       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U66         | 3   |        | mul22       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U48         | 3   |        | mul23       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U49         | 3   |        | mul24       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U67         | 3   |        | mul25       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U59         | 3   |        | tmp19       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U68         | 3   |        | mul26       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U69         | 3   |        | mul27       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U50         | 3   |        | mul28       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U51         | 3   |        | mul29       | fmul  | maxdsp  | 3       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U18        | 2   |        | tmp21       | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U19        | 2   |        | tmp25       | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U26        | 2   |        | tmp26       | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U20        | 2   |        | tmp27       | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U21        | 2   |        | tmp29       | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U27        | 2   |        | tmp30       | fadd  | fulldsp | 4       |
+|    fadd_32ns_32ns_32_5_full_dsp_1_U30        | 2   |        | C           | fadd  | fulldsp | 4       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U72         | 3   |        | mul30       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U71         | 3   |        | tmp31       | fmul  | maxdsp  | 3       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U73         | 3   |        | mul31       | fmul  | maxdsp  | 3       |
+|    fsub_32ns_32ns_32_5_full_dsp_1_U31        | 2   |        | disc        | fsub  | fulldsp | 4       |
+|    fsqrt_32ns_32ns_32_16_no_dsp_1_U81        | -   |        | ds          | fsqrt | fabric  | 15      |
+|    fsub_32ns_32ns_32_5_full_dsp_1_U32        | 2   |        | sub1        | fsub  | fulldsp | 4       |
+|    fmul_32ns_32ns_32_4_max_dsp_1_U74         | 3   |        | mul32       | fmul  | maxdsp  | 3       |
+|    fdiv_32ns_32ns_32_16_no_dsp_1_U75         | -   |        | t0          | fdiv  | fabric  | 15      |
+|    fsub_32ns_32ns_32_5_full_dsp_1_U33        | 2   |        | add4        | fsub  | fulldsp | 4       |
+|    fdiv_32ns_32ns_32_16_no_dsp_1_U76         | -   |        | t1          | fdiv  | fabric  | 15      |
+|  + dma_master_test_Pipeline_VITIS_LOOP_120_2 | 0   |        |             |       |         |         |
+|    add_ln120_fu_131_p2                       | -   |        | add_ln120   | add   | fabric  | 0       |
+|  + dma_master_test_Pipeline_5                | 0   |        |             |       |         |         |
+|    empty_23_fu_186_p2                        | -   |        | empty_23    | add   | fabric  | 0       |
+|    empty_25_fu_201_p2                        | -   |        | empty_25    | add   | fabric  | 0       |
+|    next_mul87_fu_207_p2                      | -   |        | next_mul87  | add   | fabric  | 0       |
++----------------------------------------------+-----+--------+-------------+-------+---------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
++-------------------+------+------+--------+----------+---------+------+---------+
+| Name              | BRAM | URAM | Pragma | Variable | Storage | Impl | Latency |
++-------------------+------+------+--------+----------+---------+------+---------+
+| + dma_master_test | 11   | 0    |        |          |         |      |         |
+|   buff_U          | 2    | -    |        | buff     | ram_t2p | auto | 1       |
+|   buff_1_U        | 2    | -    |        | buff_1   | ram_t2p | auto | 1       |
+|   buff_2_U        | 2    | -    |        | buff_2   | ram_t2p | auto | 1       |
+|   buff_3_U        | 2    | -    |        | buff_3   | ram_t2p | auto | 1       |
+|   buff_4_U        | 2    | -    |        | buff_4   | ram_t2p | auto | 1       |
+|   t_finals_U      | 2    | -    |        | t_finals | ram_1p  | auto | 1       |
++-------------------+------+------+--------+----------+---------+------+---------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++----------------+---------------------------------------+------------------------------------------------------+
+| Type           | Options                               | Location                                             |
++----------------+---------------------------------------+------------------------------------------------------+
+| interface      | m_axi port=arr depth=514 offset=slave | dma-master-test.cpp:24 in dma_master_test, arr       |
+| interface      | s_axilite port=num_quads              | dma-master-test.cpp:25 in dma_master_test, num_quads |
+| interface      | s_axilite port=return                 | dma-master-test.cpp:26 in dma_master_test, return    |
+| pipeline       | II=1                                  | dma-master-test.cpp:44 in dma_master_test            |
+| loop_tripcount | min=1 max=50                          | dma-master-test.cpp:45 in dma_master_test            |
+| loop_tripcount | min=0 max=50                          | dma-master-test.cpp:121 in dma_master_test           |
++----------------+---------------------------------------+------------------------------------------------------+
+
+* Inferred Pragmas
++---------------------------------+-----------------+------------------------------------------+----------------------------------+
+| Source Pragma                   | Inferred Pragma | Options                                  | Location                         |
++---------------------------------+-----------------+------------------------------------------+----------------------------------+
+| pipeline dma-master-test.cpp:44 | array_partition | dim=1 type=cyclic factor=5 variable=buff | variable buff in dma_master_test |
++---------------------------------+-----------------+------------------------------------------+----------------------------------+
+
+

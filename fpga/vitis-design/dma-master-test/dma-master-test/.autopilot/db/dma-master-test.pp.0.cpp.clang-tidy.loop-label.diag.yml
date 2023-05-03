@@ -1,0 +1,22 @@
+---
+MainSourceFile:  'C:/Users/Joseph/Desktop/dma-master-test/dma-master-test/dma-master-test/.autopilot/db/dma-master-test.pp.0.cpp'
+Diagnostics:     
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_43_1:  '
+    FileOffset:      43
+    FilePath:        dma-master-test.cpp
+    Replacements:    
+      - FilePath:        'C:\Users\Joseph\Desktop\dma-master-test\dma-master-test\dma-master-test\.autopilot\db\dma-master-test.pp.0.cpp'
+        Offset:          158431
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_43_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_120_2:  '
+    FileOffset:      120
+    FilePath:        dma-master-test.cpp
+    Replacements:    
+      - FilePath:        'C:\Users\Joseph\Desktop\dma-master-test\dma-master-test\dma-master-test\.autopilot\db\dma-master-test.pp.0.cpp'
+        Offset:          159826
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_120_2: '
+...

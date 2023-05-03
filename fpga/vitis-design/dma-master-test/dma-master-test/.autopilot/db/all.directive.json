@@ -1,0 +1,35 @@
+{"sourceFile": [{
+      "name": "",
+      "directive": [
+        {
+          "functionName": "dma_master_test",
+          "label": "",
+          "functionLabel": "",
+          "id": "1",
+          "sourceFile": "C:\/Users\/Joseph\/Desktop\/dma-master-test\/dma-master-test\/dma-master-test\/directives.tcl",
+          "sourceLine": "6",
+          "pragma": {
+            "name": "TOP",
+            "option": [{
+                "name": "name",
+                "value": "dma_master_test"
+              }]
+          }
+        },
+        {
+          "functionName": "dma_master_test",
+          "label": "",
+          "functionLabel": "",
+          "id": "2",
+          "sourceFile": "C:\/Users\/Joseph\/Desktop\/dma-master-test\/dma-master-test\/dma-master-test\/csynth.tcl",
+          "sourceLine": "15",
+          "pragma": {
+            "name": "TOP",
+            "option": [{
+                "name": "name",
+                "value": "dma_master_test"
+              }]
+          }
+        }
+      ]
+    }]}

@@ -1,0 +1,8 @@
+<pragmas>
+<pragma file="dma-master-test.cpp" line="121" pragmaType="loop_tripcount" parentfunction="dma_master_test" min="0" max="50" avg="25"/>
+<pragma file="dma-master-test.cpp" line="44" pragmaType="pipeline" parentfunction="dma_master_test" off="0" ii="1" rewind="0" style=""/>
+<pragma file="dma-master-test.cpp" line="45" pragmaType="loop_tripcount" parentfunction="dma_master_test" min="1" max="50" avg="25"/>
+<pragma file="dma-master-test.cpp" line="24" pragmaType="interface" parentfunction="dma_master_test" mode="m_axi" port="arr" bundle="" offset="slave" name="" depth="514" num_read_outstanding="-1" num_write_outstanding="-1" max_burst_read_length="-1" max_burst_write_length="-1" latency="-1" max_widen_bitwidth="-1" channel=""/>
+<pragma file="dma-master-test.cpp" line="25" pragmaType="interface" parentfunction="dma_master_test" mode="s_axilite" port="num_quads" bundle="" offset="-1" name="" clock="" impl="" register="0"/>
+<pragma file="dma-master-test.cpp" line="26" pragmaType="interface" parentfunction="dma_master_test" mode="s_axilite" port="" bundle="" offset="-1" name="" clock="" impl="" register="0"/>
+</pragmas>

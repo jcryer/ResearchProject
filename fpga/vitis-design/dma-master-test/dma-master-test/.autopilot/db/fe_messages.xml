@@ -1,0 +1,42 @@
+<xilinx:hls_fe_msgs>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="C:/Users/Joseph/Desktop/dma-master-test/dma-master-test/dma-master-test/csynth.tcl:15:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="dma_master_test" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=dma_master_test" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="C:/Users/Joseph/Desktop/dma-master-test/dma-master-test/dma-master-test/directives.tcl:6:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="dma_master_test" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=dma_master_test" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="dma-master-test.cpp:24:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="dma_master_test" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port=arr depth=514 offset=slave" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="dma-master-test.cpp:25:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="dma_master_test" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=num_quads" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="dma-master-test.cpp:26:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="dma_master_test" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="dma-master-test.cpp:44:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="dma_master_test" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="dma-master-test.cpp:45:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="dma_master_test" ARG_PragmaIsValid="1" ARG_PragmaOptions="min=1 max=50" ARG_PragmaType="loop_tripcount" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="dma-master-test.cpp:121:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="dma_master_test" ARG_PragmaIsValid="1" ARG_PragmaOptions="min=0 max=50" ARG_PragmaType="loop_tripcount" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="dma-master-test.cpp:23:0" msg_body="Inlining function 'std::sqrt(float)' into 'dma_master_test(float volatile*, int)'">
+        <args Callee="std::sqrt(float)" Caller="dma_master_test(float volatile*, int)"/>
+    </msg>
+    <msg msg_groups="PRAGMA_INLINE" msg_id="214-178" msg_severity="INFO" msg_loc="dma-master-test.cpp:23:0" msg_body="Inlining function 'calcInvSqRoot(float)' into 'dma_master_test(float volatile*, int)'">
+        <args Callee="calcInvSqRoot(float)" Caller="dma_master_test(float volatile*, int)"/>
+    </msg>
+    <msg msg_groups="AUTOMATION_VERBOSE_PASSED" msg_id="214-335" msg_severity="INFO" msg_loc="dma-master-test.cpp:0:1" msg_body="array_partition dim=1 type=cyclic factor=5 variable=buff 1 dma_master_test dma-master-test.cpp:28:8 dma-master-test.cpp:44:9buff">
+        <args PragmaFunction="dma_master_test" PragmaIsAuto="1" PragmaOptions="dim=1 type=cyclic factor=5 variable=buff" PragmaSrcLoc="dma-master-test.cpp:44:9" PragmaType="array_partition" VarName="buff" varLoc="dma-master-test.cpp:28:8"/>
+    </msg>
+    <msg msg_groups="AUTOMATION PRAGMA_MISC" msg_id="214-270" msg_severity="INFO" msg_loc="dma-master-test.cpp:44:9" msg_body="Inferring pragma 'array_partition type=cyclic factor=5 dim=1' for array 'buff' due to pipeline pragma">
+        <args Dim="1" Factor="5" Mode="cyclic" Name="buff" PragmaType="array_partition"/>
+    </msg>
+    <msg msg_groups="PRAGMA_MISC" msg_id="214-248" msg_severity="INFO" msg_loc="dma-master-test.cpp:28:8" msg_body="Applying array_partition to 'buff': Cyclic partitioning with factor 5 on dimension 1.">
+        <args Dim="1" Factor="5" Mode="Cyclic" UOName="buff"/>
+    </msg>
+</xilinx:hls_fe_msgs>
+

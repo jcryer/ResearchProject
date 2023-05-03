@@ -1,0 +1,258 @@
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vitis_HLS/2022.2/bin/unwrapped/win64.o/vitis_hls.exe'
+INFO: [HLS 200-10] For user 'Joseph' on host 'desktop-2km0t8n' (Windows NT_amd64 version 6.2) on Thu Apr 27 23:04:17 +0100 2023
+INFO: [HLS 200-10] In directory 'C:/Users/Joseph/Desktop/dma-master-test'
+Sourcing Tcl script 'C:/Users/Joseph/Desktop/dma-master-test/dma-master-test/dma-master-test/csynth.tcl'
+INFO: [HLS 200-1510] Running: source C:/Users/Joseph/Desktop/dma-master-test/dma-master-test/dma-master-test/csynth.tcl
+INFO: [HLS 200-1510] Running: open_project dma-master-test 
+INFO: [HLS 200-10] Opening project 'C:/Users/Joseph/Desktop/dma-master-test/dma-master-test'.
+INFO: [HLS 200-1510] Running: set_top dma_master_test 
+INFO: [HLS 200-1510] Running: add_files dma-master-test.cpp 
+INFO: [HLS 200-10] Adding design file 'dma-master-test.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution dma-master-test -flow_target vivado 
+INFO: [HLS 200-10] Opening solution 'C:/Users/Joseph/Desktop/dma-master-test/dma-master-test/dma-master-test'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_compile -complex-mul-dsp=0
+INFO: [HLS 200-1464] Running solution command: config_compile -unsafe_math_optimizations=1
+INFO: [XFORM 203-1172] Optimizing floating point zeros and discarding its signedness.
+INFO: [XFORM 203-1176] Optimizing floating point comparison without checking NaN.
+INFO: [XFORM 203-1173] Reordering floating point operations aggressively.
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [XFORM 203-1172] Optimizing floating point zeros and discarding its signedness.
+INFO: [XFORM 203-1176] Optimizing floating point comparison without checking NaN.
+INFO: [XFORM 203-1173] Reordering floating point operations aggressively.
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_compile -unsafe_math_optimizations 
+INFO: [XFORM 203-1172] Optimizing floating point zeros and discarding its signedness.
+INFO: [XFORM 203-1176] Optimizing floating point comparison without checking NaN.
+INFO: [XFORM 203-1173] Reordering floating point operations aggressively.
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -rtl verilog 
+INFO: [HLS 200-1510] Running: source ./dma-master-test/dma-master-test/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name dma_master_test dma_master_test 
+INFO: [HLS 200-1510] Running: csynth_design 
+Running Dispatch Server on port: 60814
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 10.073 seconds; current allocated memory: 105.320 MB.
+INFO: [HLS 200-10] Analyzing design file 'dma-master-test.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.235 seconds; current allocated memory: 105.883 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-178] Inlining function 'std::sqrt(float)' into 'dma_master_test(float volatile*, int)' (dma-master-test.cpp:23:0)
+INFO: [HLS 214-178] Inlining function 'calcInvSqRoot(float)' into 'dma_master_test(float volatile*, int)' (dma-master-test.cpp:23:0)
+INFO: [HLS 214-270] Inferring pragma 'array_partition type=cyclic factor=5 dim=1' for array 'buff' due to pipeline pragma (dma-master-test.cpp:44:9)
+INFO: [HLS 214-248] Applying array_partition to 'buff': Cyclic partitioning with factor 5 on dimension 1. (dma-master-test.cpp:28:8)
+INFO: [HLS 214-115] Multiple burst reads of length 514 and bit width 32 in loop 'anonymous'(dma-master-test.cpp:31:2) has been inferred on bundle 'gmem'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (dma-master-test.cpp:31:2)
+INFO: [HLS 214-115] Multiple burst writes of length 8 and bit width 32 in loop 'anonymous'(dma-master-test.cpp:160:2) has been inferred on bundle 'gmem'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (dma-master-test.cpp:160:2)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 4.367 seconds; current allocated memory: 106.777 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.002 seconds; current allocated memory: 106.777 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.053 seconds; current allocated memory: 113.652 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.042 seconds; current allocated memory: 114.922 MB.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'dma_master_test' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-3' in function 'dma_master_test' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_120_2' (dma-master-test.cpp:40) in function 'dma_master_test' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-6' in function 'dma_master_test' automatically.
+WARNING: [XFORM 203-561] Updating loop lower bound from 0 to 1 for loop 'VITIS_LOOP_120_2' (dma-master-test.cpp:121:9) in function 'dma_master_test'.
+INFO: [XFORM 203-11] Balancing expressions in function 'dma_master_test' (dma-master-test.cpp:23)...38 expression(s) balanced.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.263 seconds; current allocated memory: 138.141 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 't_finals' 
+INFO: [HLS 200-472] Inferring partial write operation for 'buff' 
+INFO: [HLS 200-472] Inferring partial write operation for 'buff.1' 
+INFO: [HLS 200-472] Inferring partial write operation for 'buff.2' 
+INFO: [HLS 200-472] Inferring partial write operation for 'buff.3' 
+INFO: [HLS 200-472] Inferring partial write operation for 'buff.4' 
+INFO: [HLS 200-472] Inferring partial write operation for 't_finals' (dma-master-test.cpp:108:16)
+INFO: [HLS 200-472] Inferring partial write operation for 't_finals' (dma-master-test.cpp:112:16)
+INFO: [HLS 200-472] Inferring partial write operation for 'buff' (dma-master-test.cpp:141:11)
+INFO: [HLS 200-472] Inferring partial write operation for 'buff.1' (dma-master-test.cpp:143:11)
+INFO: [HLS 200-472] Inferring partial write operation for 'buff.2' (dma-master-test.cpp:144:11)
+INFO: [HLS 200-472] Inferring partial write operation for 'buff.3' (dma-master-test.cpp:145:11)
+INFO: [HLS 200-472] Inferring partial write operation for 'buff.4' (dma-master-test.cpp:149:11)
+INFO: [HLS 200-472] Inferring partial write operation for 'buff' (dma-master-test.cpp:150:11)
+INFO: [HLS 200-472] Inferring partial write operation for 'buff.1' (dma-master-test.cpp:151:11)
+INFO: [HLS 200-472] Inferring partial write operation for 'buff.2' (dma-master-test.cpp:152:11)
+INFO: [HLS 200-472] Inferring partial write operation for 'buff' (dma-master-test.cpp:157:11)
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.258 seconds; current allocated memory: 176.609 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'dma_master_test' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dma_master_test_Pipeline_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.132 seconds; current allocated memory: 181.109 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 182.281 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dma_master_test_Pipeline_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'Loop 1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.085 seconds; current allocated memory: 182.945 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.086 seconds; current allocated memory: 183.031 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dma_master_test_Pipeline_VITIS_LOOP_43_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_43_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 93, loop 'VITIS_LOOP_43_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.742 seconds; current allocated memory: 184.965 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.924 seconds; current allocated memory: 185.492 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dma_master_test_Pipeline_VITIS_LOOP_120_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_120_2'.
+WARNING: [HLS 200-880] The II Violation in module 'dma_master_test_Pipeline_VITIS_LOOP_120_2' (loop 'VITIS_LOOP_120_2'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between 'and' operation ('and_ln122', dma-master-test.cpp:122) and 'fcmp' operation ('cmp2', dma-master-test.cpp:122).
+Resolution: For help on HLS 200-880 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;t=hls+guidance;d=200-880.html
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 2, Depth = 5, loop 'VITIS_LOOP_120_2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.934 seconds; current allocated memory: 186.277 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.073 seconds; current allocated memory: 186.281 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dma_master_test_Pipeline_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 3, loop 'Loop 1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.108 seconds; current allocated memory: 186.637 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.063 seconds; current allocated memory: 186.746 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dma_master_test' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.626 seconds; current allocated memory: 188.934 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.037 seconds; current allocated memory: 189.332 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dma_master_test_Pipeline_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dma_master_test_Pipeline_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.973 seconds; current allocated memory: 191.012 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dma_master_test_Pipeline_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'dma_master_test_Pipeline_2' pipeline 'Loop 1' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_2/m_axi_gmem_ARUSER' to 0.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dma_master_test_Pipeline_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.205 seconds; current allocated memory: 192.941 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dma_master_test_Pipeline_VITIS_LOOP_43_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'dma_master_test_Pipeline_VITIS_LOOP_43_1' pipeline 'VITIS_LOOP_43_1' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-104] Estimated max fanout for 'dma_master_test_Pipeline_VITIS_LOOP_43_1' is 9969 from HDL expression: (1'b0 == ap_block_pp0_stage0_11001)
+INFO: [RTGEN 206-100] Generating core module 'dcmp_64ns_64ns_1_2_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_5_full_dsp_1': 21 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_5_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_2_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fdiv_32ns_32ns_32_16_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_4_max_dsp_1': 41 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fpext_32ns_64_2_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fsqrt_32ns_32ns_32_16_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fsub_32ns_32ns_32_5_full_dsp_1': 3 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dma_master_test_Pipeline_VITIS_LOOP_43_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.493 seconds; current allocated memory: 199.781 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dma_master_test_Pipeline_VITIS_LOOP_120_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'dma_master_test_Pipeline_VITIS_LOOP_120_2' pipeline 'VITIS_LOOP_120_2' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_2_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dma_master_test_Pipeline_VITIS_LOOP_120_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 2 seconds. CPU system time: 0 seconds. Elapsed time: 1.972 seconds; current allocated memory: 204.047 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dma_master_test_Pipeline_5' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'dma_master_test_Pipeline_5' pipeline 'Loop 1' pipeline type 'loop pipeline'
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWVALID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWADDR' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWID' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWLEN' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWSIZE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWBURST' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWLOCK' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWCACHE' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWPROT' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWQOS' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWREGION' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_AWUSER' to 0.
+WARNING: [RTGEN 206-101] Setting dangling out port 'dma_master_test_Pipeline_5/m_axi_gmem_BREADY' to 0.
+INFO: [RTGEN 206-100] Generating core module 'mux_53_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dma_master_test_Pipeline_5'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.355 seconds; current allocated memory: 204.957 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dma_master_test' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'dma_master_test/gmem' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'dma_master_test/arr' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'dma_master_test/num_quads' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'dma_master_test' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'arr', 'num_quads' and 'return' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Generating core module 'fadd_32ns_32ns_32_5_full_dsp_1': 5 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'faddfsub_32ns_32ns_32_5_full_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fcmp_32ns_32ns_1_2_no_dsp_1': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'fmul_32ns_32ns_32_4_max_dsp_1': 9 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_32ns_34ns_65_2_1': 9 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'sitofp_32ns_32_6_no_dsp_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dma_master_test'.
+INFO: [RTMG 210-278] Implementing memory 'dma_master_test_buff_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [RTMG 210-278] Implementing memory 'dma_master_test_t_finals_RAM_AUTO_1R1W' using auto RAMs.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.466 seconds; current allocated memory: 210.180 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 3 seconds. CPU system time: 1 seconds. Elapsed time: 3.064 seconds; current allocated memory: 218.305 MB.
+INFO: [HLS 200-1603] Design has inferred MAXI bursts and missed bursts, see Vitis HLS GUI synthesis summary report for detailed information.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 1.172 seconds; current allocated memory: 227.383 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for dma_master_test.
+INFO: [VLOG 209-307] Generating Verilog RTL for dma_master_test.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were NOT satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 116.27 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 12 seconds. CPU system time: 1 seconds. Elapsed time: 19.957 seconds; current allocated memory: 122.070 MB.
+INFO: [HLS 200-112] Total CPU user time: 14 seconds. Total CPU system time: 2 seconds. Total elapsed time: 31.881 seconds; peak allocated memory: 227.434 MB.
